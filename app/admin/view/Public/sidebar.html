@@ -12,7 +12,7 @@
             {if $smarty.session.user.is_admin}
             <!-- 分類管理 -->
             <li class="subtitle">
-                <a class="action tips-right" href="/index.php?p=admin&c=category" title="分類管理">
+                <a class="action tips-right" href="index.php?p=admin&c=category" title="分類管理">
                     <img src="{P}/img/icons/sidemenu/key.png" width="16" height="16" alt="icon"/>分類管理
                     <img src="{P}/img/arrow-down.png" width="7" height="4" alt="arrow" class="arrow" />
                 </a>
@@ -20,13 +20,13 @@
                     <li>
                         <a href="index.php?p=admin&c=category">
                             <img src="{P}/img/icons/sidemenu/file.png" width="16"
-                                 height="16" alt="icon"/>分类列表
+                                 height="16" alt="icon"/>分類列表
                         </a>
                     </li>
                     <li>
-                        <a href="categoryAdd.html">
+                        <a href="index.php?p=admin&c=category&a=add">
                             <img src="{P}/img/icons/sidemenu/file_add.png" width="16"
-                                 height="16" alt="icon"/>添加分类
+                                 height="16" alt="icon"/>添加分類
                         </a>
                     </li>
                 </ul>

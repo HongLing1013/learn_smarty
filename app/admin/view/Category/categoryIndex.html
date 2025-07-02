@@ -259,9 +259,9 @@
                             {foreach $smarty.session.categories as $cat}
                             <tr>
                                 <td>{$cat.id}</td>
-                                <td>{$cat.name}</td>
+                                <td>{str_repeat('----',$cat.level)}{$cat.name}</td>
+                                <td>5</td>
                                 <td>{$cat.sort}</td>
-                                <td>10</td>
                                 <td>
                                     <a href="#">刪除</a>
                                     <a href="#">編輯</a>

@@ -48,21 +48,9 @@
                                 <span class="st-labeltext">父分類</span>
                                 <select name="c_parent_id" class="uniform">
                                     <option value="0">無</option>
-                                    <option value="1">科技1</option>
-                                    <option value="5">----IT</option>
-                                    <option value="6">----g鞥物</option>
-                                    <option value="7">--------鳥類</option>
-                                    <option value="2">武俠</option>
-                                    <option value="3">旅遊</option>
-                                    <option value="4">美食</option>
-                                    <option value="8">----湘菜</option>
-                                    <option value="11">--------跳跳蛙</option>
-                                    <option value="12">--------口味蝦</option>
-                                    <option value="13">--------臭豆腐</option>
-                                    <option value="9">----粵菜</option>
-                                    <option value="14">--------白切雞</option>
-                                    <option value="15">--------隆江豬腳</option>
-                                    <option value="10">川菜</option>
+                                    {foreach $smarty.session.categories as $cat}
+                                        <option value="{$cat.id}">{str_repeat('----',$cat.level)}{$cat.name}</option>
+                                    {/foreach}
                                 </select>
                                 <div class="clear"></div>
                             </div>

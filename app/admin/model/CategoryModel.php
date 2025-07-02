@@ -32,12 +32,12 @@ class CategoryModel extends Model
             // 匹配條件
             if($cat['parent_id'] == $parent_id){
                 // 增加level信息
-                $cat['llevel'] = $level;
+                $cat['level'] = $level;
                 // 當前需要的分類
                 $list[$cat['id']] = $cat;
 
                 // 當前分類$cat可能有子分類，遞歸
-                $this->noLimitCategory($categories, $cat['id'], $level);
+                $this->noLimitCategory($categories, $cat['id'], $level + 1);
             }
         }
         // 返回需要的結果
