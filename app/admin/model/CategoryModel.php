@@ -25,7 +25,7 @@ class CategoryModel extends Model
     public function noLimitCategory($categories ,$parent_id = 0, $level = 0)
     {
         // 定義一個空數組
-        $list = array();
+        static $list = array();
 
         // 遍歷所有分類，獲取滿足要求的結果
         foreach($categories as $cat){
@@ -35,9 +35,12 @@ class CategoryModel extends Model
                 $cat['llevel'] = $level;
                 // 當前需要的分類
                 $list[$cat['id']] = $cat;
+
+                // 當前分類$cat可能有子分類，遞歸
+                $this->noLimitCategory($categories, $cat['id'], $level);
             }
         }
-        // 反為需要的結果
+        // 返回需要的結果
         return $list;
     }
 }

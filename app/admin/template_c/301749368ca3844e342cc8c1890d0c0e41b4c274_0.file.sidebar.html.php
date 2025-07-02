@@ -34,11 +34,11 @@ function content_68524e3a5b4572_74138032 (Smarty_Internal_Template $_smarty_tpl)
 /img/icons/sidemenu/laptop.png" width="16"
                 height="16" alt="icon"/>控制面板</a></li>
             <?php if ($_SESSION['user']['is_admin']) {?>
-            <!-- 分类管理 -->
+            <!-- 分類管理 -->
             <li class="subtitle">
-                <a class="action tips-right" href="#" title="分类管理">
+                <a class="action tips-right" href="#" title="分類管理">
                     <img src="<?php echo P;?>
-/img/icons/sidemenu/key.png" width="16" height="16" alt="icon"/>分类管理
+/img/icons/sidemenu/key.png" width="16" height="16" alt="icon"/>分類管理
                     <img src="<?php echo P;?>
 /img/arrow-down.png" width="7" height="4" alt="arrow" class="arrow" />
                 </a>
@@ -59,7 +59,7 @@ function content_68524e3a5b4572_74138032 (Smarty_Internal_Template $_smarty_tpl)
                     </li>
                 </ul>
             </li>
-            <!-- 分类管理 - -->
+            <!-- 分類管理 - -->
              <?php }?>
 
             <!-- 博文管理 -->

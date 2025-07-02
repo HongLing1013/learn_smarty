@@ -10,10 +10,10 @@
             <li class="active"><a href="index.html"><img src="{P}/img/icons/sidemenu/laptop.png" width="16"
                 height="16" alt="icon"/>控制面板</a></li>
             {if $smarty.session.user.is_admin}
-            <!-- 分类管理 -->
+            <!-- 分類管理 -->
             <li class="subtitle">
-                <a class="action tips-right" href="#" title="分类管理">
-                    <img src="{P}/img/icons/sidemenu/key.png" width="16" height="16" alt="icon"/>分类管理
+                <a class="action tips-right" href="/index.php?p=admin&c=category" title="分類管理">
+                    <img src="{P}/img/icons/sidemenu/key.png" width="16" height="16" alt="icon"/>分類管理
                     <img src="{P}/img/arrow-down.png" width="7" height="4" alt="arrow" class="arrow" />
                 </a>
                 <ul class="submenu display-block">
@@ -31,7 +31,7 @@
                     </li>
                 </ul>
             </li>
-            <!-- 分类管理 - -->
+            <!-- 分類管理 - -->
              {/if}
 
             <!-- 博文管理 -->
