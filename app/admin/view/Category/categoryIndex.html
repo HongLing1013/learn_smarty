@@ -158,6 +158,58 @@
         .content {
             padding: 0;
         }
+        
+        /* 側邊欄風琴夾樣式 */
+        .subtitle .submenu {
+            background: #333;
+        }
+        
+        .submenu {
+            display: none;
+        }
+        
+        .submenu.display-block {
+            display: block !important;
+        }
+        
+        .submenu li a {
+            padding-left: 40px;
+        }
+        
+        .arrow {
+            float: right;
+        }
+        
+        #sidebar {
+            width: 250px;
+            background: #444;
+        }
+        
+        #sidemenu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #sidemenu li {
+            border-bottom: 1px solid #333;
+        }
+        
+        #sidemenu a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+        }
+        
+        #sidemenu a:hover, #sidemenu .active a {
+            background: #555;
+        }
+        
+        #sidemenu img {
+            vertical-align: middle;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body class="admin-page">
@@ -246,5 +298,33 @@
     {include file="../Public/footert.html"}
     <!-- END FOOTER -->
 </div>
+
+<script type="text/javascript">
+// 側邊欄菜單切換功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 獲取所有帶有 subtitle 類的菜單項
+    const subtitleLinks = document.querySelectorAll('.subtitle > a');
+    
+    subtitleLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // 防止鏈接跳轉
+            
+            // 獲取對應的子菜單
+            const submenu = this.nextElementSibling;
+            
+            if (submenu && submenu.classList.contains('submenu')) {
+                // 切換顯示/隱藏狀態
+                if (submenu.classList.contains('display-block')) {
+                    submenu.classList.remove('display-block');
+                    submenu.style.display = 'none';
+                } else {
+                    submenu.classList.add('display-block');
+                    submenu.style.display = 'block';
+                }
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

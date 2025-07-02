@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2025-06-30 13:31:15
+/* Smarty version 3.1.32, created on 2025-07-02 13:03:55
   from '/Users/hollie/Project/smarty/app/admin/view/category/categoryIndex.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_686221230f5954_69370391',
+  'unifunc' => 'content_6864bdbb1045c6_05496097',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '668c8628871331ef630822317f2009d24c782301' => 
     array (
       0 => '/Users/hollie/Project/smarty/app/admin/view/category/categoryIndex.html',
-      1 => 1751260930,
+      1 => 1751432620,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:../Public/footert.html' => 1,
   ),
 ),false)) {
-function content_686221230f5954_69370391 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6864bdbb1045c6_05496097 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -184,6 +184,58 @@ function content_686221230f5954_69370391 (Smarty_Internal_Template $_smarty_tpl)
         .content {
             padding: 0;
         }
+        
+        /* 側邊欄風琴夾樣式 */
+        .subtitle .submenu {
+            background: #333;
+        }
+        
+        .submenu {
+            display: none;
+        }
+        
+        .submenu.display-block {
+            display: block !important;
+        }
+        
+        .submenu li a {
+            padding-left: 40px;
+        }
+        
+        .arrow {
+            float: right;
+        }
+        
+        #sidebar {
+            width: 250px;
+            background: #444;
+        }
+        
+        #sidemenu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #sidemenu li {
+            border-bottom: 1px solid #333;
+        }
+        
+        #sidemenu a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+        }
+        
+        #sidemenu a:hover, #sidemenu .active a {
+            background: #555;
+        }
+        
+        #sidemenu img {
+            vertical-align: middle;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body class="admin-page">
@@ -285,6 +337,36 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 ?>
     <!-- END FOOTER -->
 </div>
+
+<?php echo '<script'; ?>
+ type="text/javascript">
+// 側邊欄菜單切換功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 獲取所有帶有 subtitle 類的菜單項
+    const subtitleLinks = document.querySelectorAll('.subtitle > a');
+    
+    subtitleLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // 防止鏈接跳轉
+            
+            // 獲取對應的子菜單
+            const submenu = this.nextElementSibling;
+            
+            if (submenu && submenu.classList.contains('submenu')) {
+                // 切換顯示/隱藏狀態
+                if (submenu.classList.contains('display-block')) {
+                    submenu.classList.remove('display-block');
+                    submenu.style.display = 'none';
+                } else {
+                    submenu.classList.add('display-block');
+                    submenu.style.display = 'block';
+                }
+            }
+        });
+    });
+});
+<?php echo '</script'; ?>
+>
 </body>
 </html><?php }
 }
