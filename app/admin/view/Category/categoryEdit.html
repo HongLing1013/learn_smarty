@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>博客后台</title>
+    <link rel="stylesheet" type="text/css" href="{P}/css/app.css" />
+</head>
+<body>
+<div class="wrapper">
+    <!-- START HEADER -->
+    {include file="../Public/header.html"}
+    <!-- END HEADER -->
+
+    <!--  START MAIN -->
+    <div id="main">
+        <!-- START SIDEBAR -->
+        {include file="../Public/sidebar.html"}
+        <!-- END SIDEBAR -->
+
+        <!-- START PAGE -->
+         <div id="page">
+            <!-- start page title -->
+             <div class="page-title">
+                <div class="in">
+                    <div class="titlebar">
+                        <h2>分類管理</h2>
+                        <p>編輯分類</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+             </div>
+             <!-- end page title -->
+
+             <!-- start content -->
+              <div class="content">
+                <div class="simplebox grid740" style="z-index: 720;">
+                    <div class="titleh" stylle="z-index:710">
+                        <h3>編輯分類</h3>
+                    </div>
+                    <div class="body" style="z-index:690">
+                        <form id="form" name="form2" method="post" acrion="">
+                            <div class="st-form-line" style="z-index: 680">
+                                <span class="st-laveltext">名稱</span>
+                                <input name="u_username" type="text" class="st-forminput" style="width:510px" value="">
+                                <div class="clear" stye="z-index:670"></div>
+                            </div>
+                            <div class="st-form-line" stye="z-index:640">
+                                <span class="st-labeltext">父分類</span>
+                                <select name="c_parent_id" class="uniform">
+                                    <option value="0">無</option>
+                                    <option value="1">科技1</option>
+                                    <option value="5">----IT</option>
+                                    <option value="6">----g鞥物</option>
+                                    <option value="7">--------鳥類</option>
+                                    <option value="2">武俠</option>
+                                    <option value="3">旅遊</option>
+                                    <option value="4">美食</option>
+                                    <option value="8">----湘菜</option>
+                                    <option value="11">--------跳跳蛙</option>
+                                    <option value="12">--------口味蝦</option>
+                                    <option value="13">--------臭豆腐</option>
+                                    <option value="9">----粵菜</option>
+                                    <option value="14">--------白切雞</option>
+                                    <option value="15">--------隆江豬腳</option>
+                                    <option value="10">川菜</option>
+                                </select>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="st-form-line" stye="z-index:680">
+                                <span class="st-laveltext">排序</span>
+                                <input type="text" name="c_srot" class="st-forminput" style="width:510px"
+                                    value="">
+                                <div class="clear" style="z-index: 670;"></div>
+                            </div>
+
+                            <div class="button-box" stye="z-index:460">
+                                <input type="submit" class="button" value="提交" class="st-button"/>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+              </div>
+              <!-- end content -->
+         </div>
+         <!-- end page -->
+          <div class="clear"></div>
+    </div>
+    <!-- END MAIN -->
+    <!-- START FOOTER -->
+    {include file="../Public/footert.html"}
+    <!-- END FOOTER -->
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>博客后台</title>
+    <link rel="stylesheet" type="text/css" href="{P}/css/app.css" />
+</head>
+<body>
+<div class="wrapper">
+    <!-- START HEADER -->
+    {include file="../Public/header.html"}
+    <!-- END HEADER -->
+
+    <!--  START MAIN -->
+    <div id="main">
+        <!-- START SIDEBAR -->
+        {include file="../Public/sidebar.html"}
+        <!-- END SIDEBAR -->
+
+        <!-- START PAGE -->
+         <div id="page">
+            <!-- start page title -->
+             <div class="page-title">
+                <div class="in">
+                    <div class="titlebar">
+                        <h2>用戶管理</h2>
+                        <p>用戶列表</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+             </div>
+             <!-- end page title -->
+
+             <!-- start content -->
+              <div class="content">
+                <div class="simplebox grid740" style="z-index: 720;">
+                    <div class="titleh" stylle="z-index:710">
+                        <h3>評論列表</h3>
+                    </div>
+                    <!-- start table -->
+                    <table id="myTable" class="tablesorter">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>作者</th>
+                                <th>內容</th>
+                                <th>博文名</th>
+                                <th>評論時間</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>張學友</td>
+                                <td>好</td>
+                                <td>我的第一道粵菜</td>
+                                <td>2016-08-29</td>
+                                <td>
+                                    <a href="#">刪除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </thead>
+                    </table>
+                    <ul class="pagination">
+                        <li><a href="#">上一頁</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">8</a></li>
+                        <li><a href="#">9</a></li>
+                        <li><a href="#">下一頁</a></li>
+                    </ul>
+                </div>
+                <!-- END TABLE -->
+            </div>
+            <!-- end content -->
+        </div>
+        <!-- end page -->
+        <div class="clear"></div>
+    </div>
+    <!-- END MAIN -->
+
+    <!-- START FOOTER -->
+    {include file="../Public/footert.html"}
+    <!-- END FOOTER -->
+</div>
+</body>
+</html>

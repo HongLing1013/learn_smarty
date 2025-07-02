@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>博客后台</title>
+    <link rel="stylesheet" type="text/css" href="{P}/css/app.css" />
+</head>
+<body>
+<div class="wrapper">
+    <!-- START HEADER -->
+    {include file="../Public/header.html"}
+    <!-- END HEADER -->
+
+    <!--  START MAIN -->
+    <div id="main">
+        <!-- START SIDEBAR -->
+        {include file="../Public/sidebar.html"}
+        <!-- END SIDEBAR -->
+
+        <!-- START PAGE -->
+         <div id="page">
+            <!-- start page title -->
+             <div class="page-title">
+                <div class="in">
+                    <div class="titlebar">
+                        <h2>管理博文</h2>
+                        <p>博文列表</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+             </div>
+             <!-- end page title -->
+
+             <!-- start content -->
+              <div class="content">
+                <div class="simplebox grid740" style="z-index: 720;">
+                    <div class="titleh" stylle="z-index:710">
+                        <h3>搜索</h3>
+                    </div>
+                    <div class="body" style="z-index:690">
+                        <form id="form2" name="form2" method="post" acrion="">
+                            <span class="st-labeltext">標題</span>
+                            <!-- ？？？ -->
+
+                            <span class="st-babeltext">分類</span>
+                            <select name="c_id" class="uniform">
+                                <option value="0">任意</option>
+                                <option value="1">科技1</option>
+                            </select>
+                            <div class="clear"></div>
+                            <div class="st-form-line">
+                                <span class="st-labeltext">狀態</span>
+                                <select name="a_status" class="uniform">
+                                    <option value="">任意</option>
+                                    <option value="1">草稿</option>
+                                    <option value="2">公開</option>
+                                    <option value="3">隱藏</option>
+                                </select>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="st-form-line" style="z-index:620;">
+                                <span class="st-labeltext">置頂</span>
+                                <label class="margin-right10">
+                                    <div class="radio">
+                                        <span><input type="radio" name="a_toped" class="uniform" value="1"></span>
+                                    </div>置頂
+                                </label>
+                                <label class="margin-right10">
+                                    <div class="radio">
+                                        <span><input type="radio" name="a_toped" class="uniform" value="2" checked></span>
+                                    </div>不置頂
+                                </label>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="button-box" style="z-index:460;">
+                                <input type="submit">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <!-- start table -->
+                <div class="simplebox grid740">
+                    <div class="titleh">
+                        <h3>博文列表</h3>
+                    </div>
+                    <table id="myTable" class="tablesorter">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>作者</th>
+                                <th>分類</th>
+                                <th>標題</th>
+                                <th>發布日期</th>
+                                <th>評論數量</th>
+                                <th>狀態</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>張學友</td>
+                                <td>科技</td>
+                                <td>薛定諤的貓</td>
+                                <td>2016-08-29</td>
+                                <td>10</td>
+                                <td>已發佈</td>
+                                <td>
+                                    <a href="#">刪除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ul class="pagination">
+                        <li><a href="#">上一頁</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">8</a></li>
+                        <li><a href="#">9</a></li>
+                        <li><a href="#">下一頁</a></li>
+                    </ul>
+                </div>
+                <!-- end table -->
+              </div>
+              <!-- end content -->
+         </div>
+         <!-- end page -->
+          <div class="clear"></div>
+    </div>
+    <!-- END MAIN -->
+    <!-- START FOOTER -->
+    {include file="../Public/footert.html"}
+    <!-- END FOOTER -->
+</div>
+</body>
+</html>

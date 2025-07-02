@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>博客后台</title>
+    <link rel="stylesheet" type="text/css" href="{P}/css/app.css" />
+</head>
+<body>
+<div class="wrapper">
+    <!-- START HEADER -->
+{include file="../Public/header.html"}
+    <!-- END HEADER -->
+
+    <!--  START MAIN -->
+    <div id="main">
+        <!-- START SIDEBAR -->
+        {include file="../Public/sidebar.html"}
+        <!-- END SIDEBAR -->
+
+        <!-- START PAGE -->
+         <div id="page">
+            <!-- start page title -->
+             <div class="page-title">
+                <div class="in">
+                    <div class="titlebar">
+                        <h2>管理博文</h2>
+                        <p>編輯博文</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+             </div>
+             <!-- end page title -->
+
+             <!-- start content -->
+              <div class="content">
+                <div class="simplebox grid740" style="z-index: 720;">
+                    <div class="titleh" stylle="z-index:710">
+                        <h3>編輯博文</h3>
+                    </div>
+                    <div class="body" style="z-index:690">
+                        <form id="form2" name="form2" method="post" acrion="">
+
+                            
+                            <div class="st-form-line" style="z-index:680;">
+                                <span class="st-labeltext">標題</span>
+                                <input type="text" name="a_title" class="st-forminput" style="width:510px" value="" />
+                                <div class="clear" style="z-index:670"></div>
+                            </div>
+                            <div class="st-form-line" style="z-index:640;">
+                                <span class="st-labeltext">分類</span>
+                                <select name="c_id" id="" class="uniform">
+                                    <option value="0">任意</option>
+                                    <option value="1">科技1</option>
+                                </select>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="st-form-line">
+                                <span class="st-labeltext">狀態</span>
+                                <select name="a_status" id="" class="uniform">
+                                    <option value="">任意</option>
+                                    <option value="1">草稿</option>
+                                    <option value="2">公開</option>
+                                    <option value="3">隱藏</option>
+                                </select>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="st-form-line" style="z-index:620;">
+                                <span class="st-labeltext">置頂</span>
+                                <label class="margin-right10">
+                                    <div class="radio">
+                                        <span><input type="radio" name="a_toped" class="uniform" value="1"></span>
+                                    </div>置頂
+                                </label>
+                                <label class="margin-right10">
+                                    <div class="radio">
+                                        <span><input type="radio" name="a_toped" class="uniform" value="2" checked></span>
+                                    </div>不置頂
+                                </label>
+                                <div class="clear" style="z-index:610"></div>
+                            </div>
+                            <div class="st-form-line">
+                                <span class="st-laveltext">新圖片</span>
+                                <input type="file" name="a_img">
+                                <div class="clear"></div>
+                            </div>
+
+                            <!-- start jwysiwyg text editor -->
+                            <div class="simplebox grid740">
+                                <div class="titleh">
+                                    <h3>內容</h3>
+                                </div>
+                                <div class="body">
+                                    <textarea class="st-forminput" rows="5" cols="47" name="a_content" style="width:96.5%"></textarea>
+                                </div>
+                            </div>
+                            <!-- end jwysiwyg text editor -->
+
+                            <div class="button-box" style="z-index:460">
+                                <input type="submit" id="button" value="提交" class="st-button"/>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+              </div>
+              <!-- end content -->
+         </div>
+         <!-- end page -->
+          <div class="clear"></div>
+    </div>
+    <!-- END MAIN -->
+    <!-- START FOOTER -->
+    {include file="../Public/footert.html"}
+    <!-- END FOOTER -->
+</div>
+</body>
+</html>
