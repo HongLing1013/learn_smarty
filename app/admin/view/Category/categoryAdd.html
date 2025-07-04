@@ -38,15 +38,16 @@
                         <h3>添加分類</h3>
                     </div>
                     <div class="body" style="z-index:690">
-                        <form id="form" name="form2" method="post" acrion="">
+                        <form id="form" name="form2" method="post" action="index.php?p=admin&c=Category&a=insert"
+                              class="st-form" style="z-index: 700">
                             <div class="st-form-line" style="z-index: 680">
                                 <span class="st-laveltext">名稱</span>
-                                <input name="u_username" type="text" class="st-forminput" style="width:510px" value="">
+                                <input name="name" type="text" class="st-forminput" style="width:510px" value="">
                                 <div class="clear" stye="z-index:670"></div>
                             </div>
                             <div class="st-form-line" stye="z-index:640">
                                 <span class="st-labeltext">父分類</span>
-                                <select name="c_parent_id" class="uniform">
+                                <select name="parent_id" class="uniform">
                                     <option value="0">無</option>
                                     {foreach $smarty.session.categories as $cat}
                                         <option value="{$cat.id}">{str_repeat('----',$cat.level)}{$cat.name}</option>
@@ -56,7 +57,7 @@
                             </div>
                             <div class="st-form-line" stye="z-index:680">
                                 <span class="st-laveltext">排序</span>
-                                <input type="text" name="c_srot" class="st-forminput" style="width:510px"
+                                <input type="text" name="sort" class="st-forminput" style="width:510px"
                                     value="">
                                 <div class="clear" style="z-index: 670;"></div>
                             </div>

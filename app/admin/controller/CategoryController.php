@@ -33,4 +33,38 @@ class CategoryController extends Controller
         // 顯示模板
         $this->display('categoryAdd.html');
     }
+
+    // 新增分類數據庫
+    public function insert(){
+        // 接收資料
+        $name = trim($_POST['name']);
+        $parent_id = intval($_POST['parent_id']);
+        $sort = trim($_POST['sort']);
+        
+        // 合法性驗證(字符長度限定 mb_strlen)
+        if(empty($name)){
+            $this->error('分類名稱不能為空' , 'add');
+        }
+
+        // 排序應該是正整數
+        if(!is_numeric($sort) || intval($sort) != $sort || $sort < 0 || $sort > PHP_INT_MAX){
+            $this->error('排序只能是正整數' , 'add');
+        }
+
+        // 有效性驗證，當前付分類下是否有同名分類
+        $c = new \admin\model\CategoryModel();
+        if($c->checkCategoryName($parent_id, $name)){
+            // 已經存在
+            $this->error('當前分類名字：' . $name . '已經存在', 'add');
+        }
+
+        // 儲存數據
+        if($c->insertCategory($name, $parent_id, $sort)){
+            // 新增成功
+            $this->success('新增分類成功', 'index');
+        }else{
+            // 失敗
+            $this->error('新增分類失敗，請稍後再試', 'add');
+        }
+    }
 }

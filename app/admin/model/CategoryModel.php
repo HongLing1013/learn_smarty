@@ -43,4 +43,27 @@ class CategoryModel extends Model
         // 返回需要的結果
         return $list;
     }
+
+    // 驗證付分類下是否有指定名字的分類（根據名字獲取分類訊息）
+    public function checkCategoryName($parent_id, $name)
+    {
+        // 組織 SQL 語句
+        $sql = "SELECT `id` FROM {$this->table} WHERE parent_id = {$parent_id} AND name = '{$name}'";
+
+        // 獲取結果
+        $result = $this->query($sql);
+
+        // 判斷是否存在
+        return !empty($result);
+    }
+
+    // 新增分類
+    public function insertCategory($name, $parent_id, $sort)
+    {
+        // 組織 SQL 語句
+        $sql = "INSERT INTO {$this->table} VALUES (null , '{$name}', {$sort} , {$parent_id})";
+
+        // 執行 SQL 語句
+        return $this->exec($sql);
+    }
 }
