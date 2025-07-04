@@ -66,4 +66,13 @@ class CategoryModel extends Model
         // 執行 SQL 語句
         return $this->exec($sql);
     }
+
+    // 獲取子分類
+    public function getSon($id)
+    {
+        // 驗整：有沒有分類的父分累id是當前分類的id
+        $sql = "SELECT id FROM {$this->table} WHERE parent_id = {$id}";
+        //返回執行結果
+        return $this->query($sql);
+    }
 }

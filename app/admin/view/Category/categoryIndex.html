@@ -263,7 +263,8 @@
                                 <td>5</td>
                                 <td>{$cat.sort}</td>
                                 <td>
-                                    <a href="#">刪除</a>
+                                    <a href="index.php?p=admin&c=category&a=delete&id={$cat.id}"
+                                       onclick="return confirm('確定要刪除分類: {$cat.name} 嗎？');">刪除</a>
                                     <a href="#">編輯</a>
                                 </td>
                             </tr>

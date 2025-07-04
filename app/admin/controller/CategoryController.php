@@ -67,4 +67,29 @@ class CategoryController extends Controller
             $this->error('新增分類失敗，請稍後再試', 'add');
         }
     }
+
+    // 刪除分類
+    public function delete(){
+        // 接收資料
+        $id = intval($_GET['id']);
+
+        // 判定是否可刪除
+        // 1. 有子分類不能刪
+        $c = new \admin\model\CategoryModel();
+        if($c->getSon($id)){
+            // 有子分類
+            $this->error('當前分類下有子分類，不能刪除', 'index');
+        }
+
+        // 2. 有文章不能刪
+
+        // 可以刪除
+        if($c->deleteById($id)){
+            // 刪除成功
+            $this->success('刪除分類成功', 'index');
+        }else{
+            // 刪除失敗
+            $this->error('刪除分類失敗，請稍後再試', 'index');
+        }
+    }
 }

@@ -79,4 +79,14 @@ class Model {
         // 執行
         return $this->query($sql);
     }
+
+    // 根據key刪除紀錄
+    public function deleteById($id) {
+        // 判定，當前表是否有主鍵
+        if(!isset($this->fields['Key'])) return false;
+        // 構造SQL
+        $sql = "DELETE FROM {$this->getTable()} WHERE {$this->fields['Key']} = " . $id;
+        // 執行
+        return $this->exec($sql);
+    }
 }
