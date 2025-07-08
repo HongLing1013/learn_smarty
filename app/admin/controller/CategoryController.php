@@ -92,4 +92,20 @@ class CategoryController extends Controller
             $this->error('刪除分類失敗，請稍後再試', 'index');
         }
     }
+
+    // 編輯分類： 顯示表單信息
+    public function edit(){
+        // 接收資料
+        $id = intval($_GET['id']);
+
+        // 有效性驗證
+        if(!array_key_exists($id, $_SESSION['categories'])){
+            // 不存在
+            $this->error('當前要編輯的分類不存在', 'index');
+        }
+
+        // 分類Id給模板
+        $this->assign('id', $id);
+        $this->display('categoryEdit.html');
+    }
 }
