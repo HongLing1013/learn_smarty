@@ -108,4 +108,50 @@ class CategoryController extends Controller
         $this->assign('id', $id);
         $this->display('categoryEdit.html');
     }
+
+    // 編輯分類：更新數據入庫
+    public function update(){
+        // 接收資料：陣列接收要更新的資料（可能）
+        $id = intval($_POST['id']); 
+        $data['name'] = trim($_POST['name']);
+        $data['parent_id'] = intval($_POST['parent_id']);
+        $data['sort'] = trim($_POST['sort']);
+
+        // 合法性驗證(字符長度限定 mb_strlen)
+        if(empty($data['name'])){
+            $this->back('分類名稱不能為空');
+        }
+
+        // 排序應該是正整數
+        if(!is_numeric($data['sort']) || intval($data['sort']) != $data['sort'] || $data['sort'] < 0 || $data['sort'] > PHP_INT_MAX){
+            $this->back('排序只能是正整數' );
+        }
+
+        // 有效性驗證，當前父分類下是否有同名分類
+        $c = new \admin\model\CategoryModel();
+        $cat = $c->checkCategoryName($data['parent_id'], $data['name'] , true);
+
+        // 判定
+        if($cat && $cat['id'] != $id){
+            // 指定的父分類下有一個同名的子分類
+            $this->back('當前分類名字在指定父分類下已經存在');
+        }
+
+        // 數據更新確定部分判定
+        $data = array_diff_assoc($data, $_SESSION['categories'][$id]);
+        // 判定數據
+        if(empty($data)){
+            // 沒有要更新的數據
+            $this->error('沒有要更新的數據', 'index');
+        }
+
+        // 實現數據更新操作
+        if($c->autoUpdate($id, $data)){
+            // 更新成功
+            $this->success('更新成功', 'index');
+        }else{
+            // 更新失敗
+            $this->error('更新失敗', 'index');
+        }
+    }
 }

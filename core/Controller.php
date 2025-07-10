@@ -65,9 +65,18 @@ class Controller{
         exit;
     }
 
+    // 成功的跳轉
     protected function success($msg, $a = A , $c = C, $p = P , $time = 3){
         $refresh = "refresh:{$time};url=index.php?a={$a}&c={$c}&p={$p}";
         header($refresh);
+        echo $msg;
+        exit;
+    }
+
+    // 回退
+    protected function back($msg,$time = 3){
+        $url = $_SERVER['HTTP_REFERER'] ; // 獲取上一頁的地址
+        header("refresh:{$time};url={$url}");
         echo $msg;
         exit;
     }

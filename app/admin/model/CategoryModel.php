@@ -45,7 +45,7 @@ class CategoryModel extends Model
     }
 
     // 驗證付分類下是否有指定名字的分類（根據名字獲取分類訊息）
-    public function checkCategoryName($parent_id, $name)
+    public function checkCategoryName($parent_id, $name , $data = false)
     {
         // 組織 SQL 語句
         $sql = "SELECT `id` FROM {$this->table} WHERE parent_id = {$parent_id} AND name = '{$name}'";
@@ -53,8 +53,12 @@ class CategoryModel extends Model
         // 獲取結果
         $result = $this->query($sql);
 
-        // 判斷是否存在
-        return !empty($result);
+        if($data){
+            return $result;
+        }else{
+            // 判斷是否存在
+            return !empty($result);
+        }
     }
 
     // 新增分類
@@ -75,4 +79,5 @@ class CategoryModel extends Model
         //返回執行結果
         return $this->query($sql);
     }
+
 }

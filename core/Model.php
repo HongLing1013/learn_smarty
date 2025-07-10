@@ -89,4 +89,23 @@ class Model {
         // 執行
         return $this->exec($sql);
     }
+
+    // 自動更新數據
+    public function autoUpdate($id , $data){
+        // 確定where條件
+        $where = " WHERE {$this->fields['Key']} = '{$id}'";
+
+        //組織更新指令（內容）
+        $sql = "UPDATE {$this->getTable()} SET ";
+        //循環遍歷所有要更新的內容
+        foreach($data as $key => $value){
+            $sql .= "`{$key}` = '{$value}', ";
+        }
+
+        // 去掉最後的逗號
+        $sql = rtrim($sql, ', ') . $where;
+
+        // 執行
+        return $this->exec($sql);
+    }
 }
