@@ -22,13 +22,17 @@ class CategoryModel extends Model
     }
 
     // 無限極分類
-    public function noLimitCategory($categories ,$parent_id = 0, $level = 0)
+    public function noLimitCategory($categories ,$parent_id = 0, $level = 0 , $stop = 0)
     {
         // 定義一個空數組
         static $list = array();
 
         // 遍歷所有分類，獲取滿足要求的結果
         foreach($categories as $cat){
+            // 判定當前數據是否有需要保留
+            if($cat['id'] == $stop){
+                continue; // 如果有，則跳過
+            }
             // 匹配條件
             if($cat['parent_id'] == $parent_id){
                 // 增加level信息
@@ -37,7 +41,7 @@ class CategoryModel extends Model
                 $list[$cat['id']] = $cat;
 
                 // 當前分類$cat可能有子分類，遞歸
-                $this->noLimitCategory($categories, $cat['id'], $level + 1);
+                $this->noLimitCategory($categories, $cat['id'], $level + 1, $stop);
             }
         }
         // 返回需要的結果

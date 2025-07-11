@@ -104,8 +104,13 @@ class CategoryController extends Controller
             $this->error('當前要編輯的分類不存在', 'index');
         }
 
+        // 整理資料（自己及子分類不要）
+        $c = new \admin\model\CategoryModel();
+        $categories = $c->noLimitCategory($_SESSION['categories'], 0, 0, $id);
+
         // 分類Id給模板
         $this->assign('id', $id);
+        $this->assign('categories', $categories);
         $this->display('categoryEdit.html');
     }
 

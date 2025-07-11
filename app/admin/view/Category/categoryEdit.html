@@ -52,7 +52,7 @@
                                 <span class="st-labeltext">父分類</span>
                                 <select name="parent_id" class="uniform">
                                     <option value="0">無</option>
-                                    {foreach $smarty.session.categories as $cat}
+                                    {foreach $categories as $cat}
                                         <option value="{$cat.id}" {if $cat.id eq $smarty.session.categories[$id].parent_id}
                                         selected="selected"{/if}>{str_repeat('----',$cat.level)}{$cat.name}</option>
                                     {/foreach}
