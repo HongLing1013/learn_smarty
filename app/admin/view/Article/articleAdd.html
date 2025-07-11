@@ -8,7 +8,7 @@
 <body>
 <div class="wrapper">
     <!-- START HEADER -->
-{include file="../Public/header.html"}
+    {include file="../Public/header.html"}
     <!-- END HEADER -->
 
     <!--  START MAIN -->
@@ -49,8 +49,9 @@
                             <div class="st-form-line" style="z-index:640;">
                                 <span class="st-labeltext">分類</span>
                                 <select name="c_id" id="" class="uniform">
-                                    <option value="0">任意</option>
-                                    <option value="1">科技1</option>
+                                    {foreach $smarty.session.categories as $cat}
+                                    <option value="{$cat.id}">{str_repeat('----' , $cat.level)}{$cat.name}</option>
+                                    {/foreach}
                                 </select>
                                 <div class="clear"></div>
                             </div>
