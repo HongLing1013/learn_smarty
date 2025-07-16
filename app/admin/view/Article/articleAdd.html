@@ -38,12 +38,10 @@
                         <h3>添加博文</h3>
                     </div>
                     <div class="body" style="z-index:690">
-                        <form id="form2" name="form2" method="post" acrion="">
-
-                            
+                        <form id="form2" name="form2" method="post" action="index.php?p=admin&c=article&a=insert">
                             <div class="st-form-line" style="z-index:680;">
                                 <span class="st-labeltext">標題</span>
-                                <input type="text" name="a_title" class="st-forminput" style="width:510px" value="" />
+                                <input type="text" name="title" class="st-forminput" style="width:510px" value="" />
                                 <div class="clear" style="z-index:670"></div>
                             </div>
                             <div class="st-form-line" style="z-index:640;">
@@ -57,7 +55,7 @@
                             </div>
                             <div class="st-form-line">
                                 <span class="st-labeltext">狀態</span>
-                                <select name="a_status" id="" class="uniform">
+                                <select name="status" id="" class="uniform">
                                     <option value="">任意</option>
                                     <option value="1">草稿</option>
                                     <option value="2">公開</option>
@@ -69,19 +67,19 @@
                                 <span class="st-labeltext">置頂</span>
                                 <label class="margin-right10">
                                     <div class="radio">
-                                        <span><input type="radio" name="a_toped" class="uniform" value="1"></span>
+                                        <span><input type="radio" name="toped" class="uniform" value="1"></span>
                                     </div>置頂
                                 </label>
                                 <label class="margin-right10">
                                     <div class="radio">
-                                        <span><input type="radio" name="a_toped" class="uniform" value="2" checked></span>
+                                        <span><input type="radio" name="toped" class="uniform" value="2" checked></span>
                                     </div>不置頂
                                 </label>
                                 <div class="clear" style="z-index:610"></div>
                             </div>
                             <div class="st-form-line">
                                 <span class="st-laveltext">圖片</span>
-                                <input type="file" name="a_img">
+                                <input type="file" name="img">
                                 <div class="clear"></div>
                             </div>
 
@@ -91,7 +89,7 @@
                                     <h3>內容</h3>
                                 </div>
                                 <div class="body">
-                                    <textarea class="st-forminput" rows="5" cols="47" name="a_content" style="width:96.5%"></textarea>
+                                    <textarea class="st-forminput" rows="5" cols="47" name="content" style="width:96.5%"></textarea>
                                 </div>
                             </div>
                             <!-- end jwysiwyg text editor -->

@@ -108,4 +108,32 @@ class Model {
         // 執行
         return $this->exec($sql);
     }
+
+    // 自動新增
+    public function autoInsert($data) {
+        // 構建字段列表和值列表
+        $keys = $values = '';
+
+        // 通過當前屬性fields保存的所有字段來獲取data中對應的數據
+        foreach($this->fields as $k => $v) {
+            // k代表索引,v代表字段名
+            
+            // 去除key
+            if($k == 'Key') continue;
+
+            // 判定當前的字段在data中是否存在，存在取出資料 不存在不要
+            if(array_key_exists($v, $data)) {
+                // 保存字段
+                $keys .= "`{$v}`, ";
+                // 保存值
+                $values .= "'{$data[$v]}', ";
+            }
+        }
+
+        // 組織完整sql指令
+        $sql = "INSERT INTO {$this->getTable()} (" . rtrim($keys, ', ') . ") VALUES (" . rtrim($values, ', ') . ")";
+        
+        // 執行
+        return $this->exec($sql);
+    }
 }
