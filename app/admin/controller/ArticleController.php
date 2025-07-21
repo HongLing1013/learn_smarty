@@ -51,4 +51,15 @@ class ArticleController extends Controller
             $this->error('新增失敗' , 'add');
         }
     }
+
+    // 博文列表
+    public function index(){
+        // 調用模型獲取數據
+        $a = new \admin\model\ArticleModel();
+        $articles = $a->getArticleInfo();
+
+        // 顯示模板
+        $this->assign('articles', $articles);
+        $this->display('articleIndex.html');
+    }
 }

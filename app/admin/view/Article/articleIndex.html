@@ -98,18 +98,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {foreach $articles as $art}
                             <tr>
-                                <td>1</td>
-                                <td>張學友</td>
-                                <td>科技</td>
-                                <td>薛定諤的貓</td>
-                                <td>2016-08-29</td>
+                                <td>{$art.id}</td>
+                                <td>{$art.author}</td>
+                                <td>{$smarty.session.categories[$art.c_id].name}</td>
+                                <td>{$art.title}</td>
+                                <td>{date("Y-m-d H:i:s",$art.time)}</td>
                                 <td>10</td>
-                                <td>已發佈</td>
+                                <td>{if $art.status eq 1}草稿{elseif $art.status eq 2}公開{else}隱藏{/if}</td>
                                 <td>
                                     <a href="#">刪除</a>
+                                    {if $art.id eq $smarty.session.user.id}
+                                        <a href="#">編輯</a>
+                                    {/if}
                                 </td>
                             </tr>
+                            {/foreach}
                         </tbody>
                     </table>
                     <ul class="pagination">
