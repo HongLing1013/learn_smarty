@@ -35,8 +35,8 @@ class ArticleModel extends Model
         $offset = ($page - 1) * $pagecount;
 
         // 組織sql指令
-       $sql = "SELECT id,title,c_id,time,status,author FROM {$this->table} {$where} ORDER BY time DESC LIMIT {$offset} , {$pagecount}";
-
+       $sql = "SELECT id,title,c_id,time,status,author,u_id,toped FROM {$this->table} {$where} ORDER BY time DESC LIMIT {$offset} , {$pagecount}";
+       
         // 執行sql指令
         return $this->query($sql,true);
 

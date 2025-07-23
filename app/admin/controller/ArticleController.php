@@ -54,11 +54,47 @@ class ArticleController extends Controller
 
     // 博文列表
     public function index(){
+        // 接收可能存在的搜尋條件
+        $cond = array();
+
+        // 換個判定接收條件
+        if(isset($_POST['title']) && !empty($_POST['title'])){
+            $cond['title'] = trim($_POST['title']);
+        }
+
+        if(isset($_POST['c_id']) && $_POST['c_id'] != 0){
+            $cond['c_id'] = intval($_POST['c_id']);
+        }
+
+        if(isset($_POST['status']) && $_POST['status'] != 0){
+            $cond['status'] = intval($_POST['status']);
+        }
+
+        if(isset($_POST['toped']) && $_POST['toped'] != 0){
+            $cond['toped'] = intval($_POST['toped']);
+        }
+
+        // 添加普通用戶條件
+        if(!$_SESSION['user']['is_admin']){
+            $cond['u_id'] = $_SESSION['user']['id']; // 當前用戶ID
+        }
+
+        // 獲取分類訊息
+        if(!isset($_SESSION['categories'])){
+            // 如果不存在，則從數據庫中獲取分類
+            $c = new \admin\model\CategoryModel();
+            $categories = $c->getAllCategories();
+
+            // 保存session無限極分類比較佔用計算機計算資源
+            $_SESSION['categories'] = $categories;
+        }
+        
         // 調用模型獲取數據
         $a = new \admin\model\ArticleModel();
-        $articles = $a->getArticleInfo();
+        $articles = $a->getArticleInfo($cond);
 
         // 顯示模板
+        $this->assign('cond', $cond);
         $this->assign('articles', $articles);
         $this->display('articleIndex.html');
     }
