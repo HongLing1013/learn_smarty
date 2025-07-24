@@ -147,7 +147,7 @@
                                             onclick="return confirm('確定刪除文章; {$art.title}嗎?')"
                                         >刪除</a>
                                         {if $art.u_id eq $smarty.session.user.id}
-                                            <a href="#">編輯</a>
+                                            <a href="index.php?p=admin&c=article&a=edit&id={$art.id}">編輯</a>
                                         {/if}
                                     </td>
                                 </tr>

@@ -112,4 +112,32 @@ class ArticleController extends Controller
             $this->error('刪除失敗' , 'index');
         }
     }
+
+    // 編輯文章
+    public function edit(){
+        // 接收數據
+        $id = intval($_GET['id']); 
+        // 獲取文章訊息
+        $a = new \admin\model\ArticleModel();
+        $article = $a->getById($id);
+
+        // 判定
+        if(!$article){
+            $this->error('文章不存在或已被刪除' , 'index');
+        }
+
+        // 判定是否需要重新獲取分類
+        if(!isset($_SESSION['categories'])){
+            // 如果不存在，則從數據庫中獲取分類
+            $c = new \admin\model\CategoryModel();
+            $categories = $c->getAllCategories();
+
+            // 保存session無限極分類比較佔用計算機計算資源
+            $_SESSION['categories'] = $categories;
+        }
+
+        // 分配給模板顯示資料
+        $this->assign('article', $article); 
+        $this->display('articleEdit.html');
+    }
 }

@@ -43,24 +43,26 @@
                             
                             <div class="st-form-line" style="z-index:680;">
                                 <span class="st-labeltext">標題</span>
-                                <input type="text" name="a_title" class="st-forminput" style="width:510px" value="" />
+                                <input type="text" name="title" class="st-forminput" style="width:510px" value="{$article.title}" />
                                 <div class="clear" style="z-index:670"></div>
                             </div>
                             <div class="st-form-line" style="z-index:640;">
                                 <span class="st-labeltext">分類</span>
                                 <select name="c_id" id="" class="uniform">
-                                    <option value="0">任意</option>
-                                    <option value="1">科技1</option>
+                                    {foreach $smarty.session.categories as $cat}
+                                    <option value="{$cat.id}" {if $cat.id eq $article.c_id}selected="selected"{/if}>
+                                        {str_repeat('----',$cat.level)}{$cat.name}
+                                    </option>
+                                    {/foreach}
                                 </select>
                                 <div class="clear"></div>
                             </div>
                             <div class="st-form-line">
                                 <span class="st-labeltext">狀態</span>
-                                <select name="a_status" id="" class="uniform">
-                                    <option value="">任意</option>
-                                    <option value="1">草稿</option>
-                                    <option value="2">公開</option>
-                                    <option value="3">隱藏</option>
+                                <select name="status" id="" class="uniform">
+                                    <option value="1" {if $article.status eq 1}selected="selected"{/if}>草稿</option>
+                                    <option value="2"  {if $article.status eq 2}selected="selected"{/if}>公開</option>
+                                    <option value="3"  {if $article.status eq 3}selected="selected"{/if}>隱藏</option>
                                 </select>
                                 <div class="clear"></div>
                             </div>
@@ -68,19 +70,26 @@
                                 <span class="st-labeltext">置頂</span>
                                 <label class="margin-right10">
                                     <div class="radio">
-                                        <span><input type="radio" name="a_toped" class="uniform" value="1"></span>
+                                        <span><input type="radio" name="toped" class="uniform" value="1"{if $article.toped eq 1}checked="checked"{/if}></span>
                                     </div>置頂
                                 </label>
                                 <label class="margin-right10">
                                     <div class="radio">
-                                        <span><input type="radio" name="a_toped" class="uniform" value="2" checked></span>
+                                        <span><input type="radio" name="toped" class="uniform" value="2" 
+                                            {if $article.toped eq 2}checked="checked"{/if}></span>
                                     </div>不置頂
                                 </label>
                                 <div class="clear" style="z-index:610"></div>
                             </div>
+
                             <div class="st-form-line">
                                 <span class="st-laveltext">新圖片</span>
-                                <input type="file" name="a_img">
+                                <img src="{$article.img|escape:'htmlall'|default:''}" />
+                                <div class="clear"></div>
+                            </div>
+                            <div class="st-form-line">
+                                <span class="st-laveltext">新圖片</span>
+                                <input type="file" name="img">
                                 <div class="clear"></div>
                             </div>
 
@@ -90,7 +99,9 @@
                                     <h3>內容</h3>
                                 </div>
                                 <div class="body">
-                                    <textarea class="st-forminput" rows="5" cols="47" name="a_content" style="width:96.5%"></textarea>
+                                    <textarea class="st-forminput" rows="5" cols="47" name="content" style="width:96.5%">
+                                        {$article.content|escape:'htmlall'|default:''}
+                                    </textarea>
                                 </div>
                             </div>
                             <!-- end jwysiwyg text editor -->
