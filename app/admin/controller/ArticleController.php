@@ -98,4 +98,18 @@ class ArticleController extends Controller
         $this->assign('articles', $articles);
         $this->display('articleIndex.html');
     }
+
+    // 刪除部落格
+    public function delete(){
+        // 接收ID
+        $id = intval($_GET['id']);
+
+        // 刪除數據
+        $a = new \admin\model\ArticleModel();
+        if($a->deleteById($id)){
+            $this->success('刪除成功' , 'index');
+        } else {
+            $this->error('刪除失敗' , 'index');
+        }
+    }
 }

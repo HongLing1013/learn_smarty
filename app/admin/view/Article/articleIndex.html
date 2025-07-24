@@ -143,7 +143,9 @@
                                     <td>10</td>
                                     <td>{if $art.status eq 1}草稿{elseif $art.status eq 2}公開{else}隱藏{/if}</td>
                                     <td>
-                                        <a href="#">刪除</a>
+                                        <a href="index.php?p=admin&c=article&a=delete&id={$art.id}"
+                                            onclick="return confirm('確定刪除文章; {$art.title}嗎?')"
+                                        >刪除</a>
                                         {if $art.u_id eq $smarty.session.user.id}
                                             <a href="#">編輯</a>
                                         {/if}
