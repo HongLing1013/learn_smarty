@@ -140,4 +140,40 @@ class ArticleController extends Controller
         $this->assign('article', $article); 
         $this->display('articleEdit.html');
     }
+
+    // 編輯文章：更新入庫
+    public function update(){
+        $id = intval($_POST['id']);
+        $data['title'] = trim($_POST['title']);
+        $data['c_id'] = intval($_POST['c_id']);
+        $data['status'] = intval($_POST['status']);
+        $data['toped'] = intval($_POST['toped']);
+        $data['content'] = trim($_POST['content']);
+
+        // 合法性驗證
+        if(empty($data['title']) || empty($data['content'])){
+            $this->error('標題和內容不可為空');
+        }
+
+        // 獲取當前id對應原本的資料
+        $a = new \admin\model\ArticleModel();
+        $article = $a->getById($id);
+
+        // 數據篩選
+        $data = array_diff_assoc($data , $article);
+
+        // 判定
+        if(empty($data)){
+            $this->error('沒有任何修改' , 'index');
+        }
+
+        // 要更新內容
+        if($a->autoUpdate($id, $data)){
+            // 成功
+            $this->success('文章更新成功' , 'index');
+        } else {
+            // 失敗
+            $this->back('更新失敗');
+        }
+    }
 }
