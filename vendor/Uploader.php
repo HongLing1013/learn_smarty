@@ -18,7 +18,7 @@ class Uploader {
     public static $error; // 紀錄上傳過程中出現的錯誤
     public static function uploadOne(array $file, string $path,int $max = 2000000){
         // 判定文件有效性
-        if(isset($file['error']) || count($file) != 5){
+        if(!isset($file['error']) || count($file) != 5){
             self::$error = '錯誤的上傳文件！';
             return false;
         }
@@ -55,7 +55,7 @@ class Uploader {
 
         // 判定文件大小
         if($file['size'] > $max){
-            self::$error = '上傳的文件過大！允許的大小為:' . (string) ($max / 100000) . 'MB';
+            self::$error = '上傳的文件過大！允許的大小為:' . (string) ($max / 1000000) . 'MB';
             return false;
         }
 

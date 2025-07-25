@@ -50,7 +50,7 @@ class ArticleController extends Controller
         if($a->autoInsert($data)){
             //確定圖片是否上傳成功
             if(!$img){
-                $this->error("文章新增成功，但圖片上傳失敗，失敗原因：" . \vendor\Uploader::$error, 'index');
+                $this->success("文章新增成功，但圖片上傳失敗，失敗原因：" . \vendor\Uploader::$error, 'index');
             }
             // 成功
             $this->success('文章：'. $data['title'] . '新增成功' , 'index');
