@@ -41,6 +41,7 @@ class App{
         define("HOME_VIEW", HOME_PATH . 'view/');
         define("VENDOR_PATH", ROOT_PATH . 'vendor/');
         define("CONFIG_PATH", ROOT_PATH . 'config/');
+        define("UPLOAD_PATH", ROOT_PATH . 'public/uploads/');
         define("URL" , 'http://' . $_SERVER['HTTP_HOST']);
     }
 

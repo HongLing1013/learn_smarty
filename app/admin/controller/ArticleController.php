@@ -40,10 +40,18 @@ class ArticleController extends Controller
         $data['time'] = time();
 
         // 理論上來說應該要先實現文件上傳和縮略圖
+        if($img = \vendor\Uploader::uploadOne($_FILES['img'], UPLOAD_PATH )){
+            //圖片上傳成功
+            $data['img'] = $img;
+        }
 
         // 入庫
         $a = new \admin\model\ArticleModel();
         if($a->autoInsert($data)){
+            //確定圖片是否上傳成功
+            if(!$img){
+                $this->error("文章新增成功，但圖片上傳失敗，失敗原因：" . \vendor\Uploader::$error, 'index');
+            }
             // 成功
             $this->success('文章：'. $data['title'] . '新增成功' , 'index');
         } else {
