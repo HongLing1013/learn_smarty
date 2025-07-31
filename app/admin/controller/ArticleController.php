@@ -65,7 +65,8 @@ class ArticleController extends Controller
             // 成功
             $this->success('文章：'. $data['title'] . '新增成功' , 'index');
         } else {
-            // 失敗
+            // 失敗：刪除可能上傳成功的圖片
+            @unlink(UPLOAD_PATH . $img);
             $this->error('新增失敗' , 'add');
         }
     }
