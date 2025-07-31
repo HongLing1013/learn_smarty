@@ -43,6 +43,12 @@ class ArticleController extends Controller
         if($img = \vendor\Uploader::uploadOne($_FILES['img'], UPLOAD_PATH )){
             //圖片上傳成功
             $data['img'] = $img;
+
+            // 製作縮略圖
+            $img_thumb = \vendor\Image::makeThumb(UPLOAD_PATH . $img, UPLOAD_PATH);
+            if($img_thumb){
+                $data['thumb'] = $img_thumb;
+            }
         }
 
         // 入庫
@@ -51,6 +57,10 @@ class ArticleController extends Controller
             //確定圖片是否上傳成功
             if(!$img){
                 $this->success("文章新增成功，但圖片上傳失敗，失敗原因：" . \vendor\Uploader::$error, 'index');
+            }
+            //縮略圖可能出錯
+            if($img && !$img_thumb){
+                $this->success("文章新增成功，但縮略圖製作失敗，失敗原因：" . \vendor\Image::$error, 'index');
             }
             // 成功
             $this->success('文章：'. $data['title'] . '新增成功' , 'index');

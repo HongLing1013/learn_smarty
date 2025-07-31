@@ -70,7 +70,7 @@ class Image{
         }
 
         // 複製合併：縮略圖
-        if(!imagecopyresampled($thumb, $src, $x, $h, 0, 0, $w, $h, $img_info[0], $img_info[1])){
+        if(!imagecopyresampled($thumb, $src, $x, $y, 0, 0, $w, $h, $img_info[0], $img_info[1])){
             // 採樣複製失敗
             self::$error = '縮略圖製作失敗！';
             return false;
