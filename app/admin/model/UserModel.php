@@ -32,4 +32,12 @@ class UserModel extends Model
         // 返回結果
         return $res['c'] ?? 0; // 如果沒有結果，則返回0
     }
+
+    // 驗證用戶名是否存在
+    public function checkUsername($username){
+        // 組織sql
+        $sql = "SELECT `id` FROM {$this->getTable()} WHERE username = '{$username}'";
+        
+        return $this->query($sql);
+    }
 }
