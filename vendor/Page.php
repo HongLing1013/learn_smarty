@@ -4,11 +4,11 @@ namespace vendor;
 
 class Page{
     // 生成分頁字符串
-    public static function clickPage($url , $counts , $pagecount = 5 , $pages = 1, $cond = array()){
+    public static function clickPage($url , $counts , $pagecount = 5 , $page = 1, $cond = array()){
         // 計算頁碼
-        $page = ceil($counts / $pagecount);
+        $pages = ceil($counts / $pagecount);
         $prev = $page > 1 ? $page - 1 : 1;
-        $next = $page < $counts ? $page + 1 : $counts;
+        $next = $page < $pages ? $page + 1 : $pages;
 
         // 組織條件：路徑條件
         $pathinfo = '';
@@ -22,7 +22,7 @@ class Page{
         //頁碼點擊判定
         if($pages <= 7){
             //有多少頁點多少頁
-            for($i = 1; $i <= $page; $i++){
+            for($i = 1; $i <= $pages; $i++){
                 $click .= "<li><a href='{$url}?{$pathinfo}page={$i}'>{$i}</a></li>";
             }
         }else{
@@ -49,7 +49,7 @@ class Page{
                     }
                 }else{
                     // 選擇的5頁在中間  
-                    for($i = $pages - 2; $i <= $pages + 2; $i++){
+                    for($i = $page - 2; $i <= $page + 2; $i++){
                         $click .= "<li><a href='{$url}?{$pathinfo}page={$i}'>{$i}</a></li>";
                     }
 

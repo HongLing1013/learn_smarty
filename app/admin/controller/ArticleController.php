@@ -73,6 +73,13 @@ class ArticleController extends Controller
 
     // 博文列表
     public function index(){
+        // 接收可能存在的頁碼
+        $page = intval($_REQUEST['page'] ?? 1);
+        
+        // 判定分頁數據，每頁顯示多少
+        global $config;
+        $pagecount = $config['admin']['article_pagecount'] ?? 5; // 每頁
+
         // 接收可能存在的搜尋條件
         $cond = array();
 
@@ -110,9 +117,16 @@ class ArticleController extends Controller
         
         // 調用模型獲取數據
         $a = new \admin\model\ArticleModel();
-        $articles = $a->getArticleInfo($cond);
+        $articles = $a->getArticleInfo($cond,$pagecount, $page);
+
+        // 獲取滿足條件的紀錄總數
+        $counts = $a->getSearchCounts($cond);
+
+        // 調用分頁累產生分頁數據
+        $pagestr = \vendor\Page::clickPage(URL."index.php",$counts,$pagecount, $page, $cond);
 
         // 顯示模板
+        $this->assign('pagestr', $pagestr);
         $this->assign('cond', $cond);
         $this->assign('articles', $articles);
         $this->display('articleIndex.html');

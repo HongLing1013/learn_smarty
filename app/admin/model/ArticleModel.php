@@ -41,4 +41,35 @@ class ArticleModel extends Model
         return $this->query($sql,true);
 
     }
+    // 獲取滿足條件的紀錄總數
+    public function getSearchCounts($cond = array()){
+        // 基礎條件： 文章沒有被刪除
+        $where = " WHERE is_delete = 0 ";
+
+        // 條件組織
+        foreach($cond as $k => $v){
+            // k代筆字段名v代表條件值
+            switch($k){
+                case 'title':
+                    $where .= " AND title LIKE '%{$v}%' ";
+                    break;
+                case 'c_id':
+                case 'u_id':
+                case 'status':
+                case 'toped':
+                    $where .= " AND {$k} = {$v} ";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // 組織sql指令
+        $sql = "SELECT COUNT(*) AS c FROM {$this->table} {$where}";
+        
+        //取出結果
+        $res = $this->query($sql);
+        return $res['c'] ?? 0; // 直接訪問 $res['c']
+        return $res[0]['c'] ?? 0; // 返回滿足條件的紀錄總數
+    }
 }
