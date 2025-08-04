@@ -67,7 +67,7 @@ class App{
     private static function set_url(){
         // 取出平台訊息（p）和控制器訊息（c）和方法訊息（a）
         $p = isset($_REQUEST['p']) ? $_REQUEST['p'] : 'home'; //默認訪問前台
-        $c = isset($_REQUEST['c']) ? $_REQUEST['c'] : 'Index'; //默認訪問IndexController
+        $c = isset($_REQUEST['c']) ? ucfirst($_REQUEST['c']) : 'Index'; //默認訪問IndexController，確保首字母大寫
         $a = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'index';
 
         // 考慮到以上信息可能會在後台序用到（其他類中），所以將其設定為全局變量

@@ -57,11 +57,13 @@
             {if $smarty.session.user.is_admin}
             <!-- 用戶管理 -->
             <li class="subtitle">
-                <a class="action tips-right" href="#" title="用戶管理"><img src="{P}/img/icons/sidemenu/user.png" width="16" height="16" alt="icon"/>用戶管理<img src="{P}/img/arrow-down.png" width="7"
-                   height="4" alt="arrow" class="arrow" /></a>
+                <a class="action tips-right" href="#" title="用戶管理">
+                    <img src="{P}/img/icons/sidemenu/user.png" width="16" height="16" alt="icon"/>用戶管理
+                    <img src="{P}/img/arrow-down.png" width="7" height="4" alt="arrow" class="arrow" />
+                </a>
                 <ul class="submenu display-block">
                     <li>
-                        <a href="userAdd.html">
+                        <a href="index.php?p=admin&c=user&a=add">
                             <img src="{P}/img/icons/sidemenu/user_add.png" width="16"
                                  height="16" alt="icon"/>添加用戶
                         </a>
