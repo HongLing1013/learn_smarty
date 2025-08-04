@@ -40,4 +40,17 @@ class UserModel extends Model
         
         return $this->query($sql);
     }
+
+    // 按照分頁獲取用戶訊息
+    public function getAllUsers($pagecount = 5 , $page = 1)
+    {
+        // 計算偏移量
+        $offset = ($page - 1) * $pagecount;
+
+        // 組織SQL指令，獲取用戶信息
+        $sql = "SELECT id ,username, is_admin  , reg_time FROM {$this->getTable()} ORDER BY reg_time DESC LIMIT {$offset}, {$pagecount}";
+
+        // 執行SQL指令，並返回結果（注意：添加 true 參數獲取所有記錄）
+        return $this->query($sql, true);
+    }
 }

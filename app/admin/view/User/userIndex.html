@@ -49,16 +49,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {foreach $users as $user}
                             <tr>
-                                <td>1</td>
-                                <td>張學友</td>
-                                <td>管理員</td>
-                                <td>2016-08-29</td>
+                                <td>{$user@iteration}</td>
+                                <td>{$user.username}</td>
+                                <td>{if $user.is_admin}管理員{else}普通用戶{/if}</td>
+                                <td>{date("Y-m-d H:i:s" ,$user.reg_time)}</td>
                                 <td>
                                     <a href="#">刪除</a>
                                     <a href="#">編輯</a>
                                 </td>
                             </tr>
+                            {/foreach}
                         </tbody>
                         </thead>
                     </table>

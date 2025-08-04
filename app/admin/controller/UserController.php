@@ -40,4 +40,14 @@ class UserController extends Controller
             $this->error("用戶添加失敗", "add");
         }
     }
+
+    // 顯示所有用戶信息
+    public function index(){
+        //獲取所有用戶
+        $u = new \admin\model\UserModel();
+        $users = $u->getAllUsers();
+        
+        $this->assign("users", $users);
+        $this->display("userIndex.html");
+    }
 }
