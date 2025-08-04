@@ -122,8 +122,13 @@ class ArticleController extends Controller
         // 獲取滿足條件的紀錄總數
         $counts = $a->getSearchCounts($cond);
 
+        // 增加分類連結條件，補充A,C,P
+        $cond['a'] = A;
+        $cond['c'] = C;
+        $cond['p'] = P;
+
         // 調用分頁累產生分頁數據
-        $pagestr = \vendor\Page::clickPage(URL."index.php",$counts,$pagecount, $page, $cond);
+        $pagestr = \vendor\Page::clickPage(URL."/index.php",$counts,$pagecount, $page, $cond);
 
         // 顯示模板
         $this->assign('pagestr', $pagestr);
