@@ -84,20 +84,20 @@ class ArticleController extends Controller
         $cond = array();
 
         // 換個判定接收條件
-        if(isset($_POST['title']) && !empty($_POST['title'])){
-            $cond['title'] = trim($_POST['title']);
+        if(isset($_REQUEST['title']) && !empty($_REQUEST['title'])){
+            $cond['title'] = trim($_REQUEST['title']);
         }
 
-        if(isset($_POST['c_id']) && $_POST['c_id'] != 0){
-            $cond['c_id'] = intval($_POST['c_id']);
+        if(isset($_REQUEST['c_id']) && $_REQUEST['c_id'] != 0){
+            $cond['c_id'] = intval($_REQUEST['c_id']);
         }
 
-        if(isset($_POST['status']) && $_POST['status'] != 0){
-            $cond['status'] = intval($_POST['status']);
+        if(isset($_REQUEST['status']) && $_REQUEST['status'] != 0){
+            $cond['status'] = intval($_REQUEST['status']);
         }
 
-        if(isset($_POST['toped']) && $_POST['toped'] != 0){
-            $cond['toped'] = intval($_POST['toped']);
+        if(isset($_REQUEST['toped']) && $_REQUEST['toped'] != 0){
+            $cond['toped'] = intval($_REQUEST['toped']);
         }
 
         // 添加普通用戶條件
